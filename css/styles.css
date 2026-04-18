@@ -428,13 +428,8 @@ a:hover {
   margin-inline: auto;
 }
 
-.split-reverse {
-  grid-template-columns: 1fr 1fr;
-}
-
 @media (max-width: 880px) {
-  .split,
-  .split-reverse {
+  .split {
     grid-template-columns: 1fr;
   }
 }

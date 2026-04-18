@@ -4,7 +4,6 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
 
@@ -126,14 +125,10 @@
     });
     if (panelName === "dining") {
       panelDining.hidden = false;
-      panelDining.classList.add("is-active");
       panelCatering.hidden = true;
-      panelCatering.classList.remove("is-active");
     } else {
       panelDining.hidden = true;
-      panelDining.classList.remove("is-active");
       panelCatering.hidden = false;
-      panelCatering.classList.add("is-active");
     }
   }
 
@@ -156,7 +151,6 @@
     return new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
   }
 
-  /** 0 = Sunday … 6 = Saturday (Date.getDay) */
   function openingMinutes(day) {
     return day === 0 ? 11 * 60 : 10 * 60;
   }
@@ -328,15 +322,11 @@
 
       var fd = new FormData(form);
       var dateIso = fd.get("date");
-      var timeVal = fd.get("time");
-      var timeLabel = "";
-      if (timeSelect && timeSelect.selectedIndex >= 0) {
-        timeLabel = timeSelect.options[timeSelect.selectedIndex].textContent;
-      }
-
-      var whenLine = timeLabel
-        ? formatDateLong(String(dateIso)) + " at " + timeLabel
-        : String(dateIso) + " " + String(timeVal);
+      var timeLabel =
+        timeSelect && timeSelect.selectedIndex > 0
+          ? timeSelect.options[timeSelect.selectedIndex].textContent.trim()
+          : "";
+      var whenLine = formatDateLong(String(dateIso)) + " at " + timeLabel;
 
       var lines = [
         "Reservation request — Zona Restaurant",
@@ -370,29 +360,15 @@
   }
 
   var backTop = document.getElementById("back-to-top");
-  if (backTop) {
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (window.scrollY > 420) backTop.classList.add("is-visible");
-        else backTop.classList.remove("is-visible");
-      },
-      { passive: true }
-    );
-  }
-
-  if (header) {
-    var last = 0;
-    window.addEventListener(
-      "scroll",
-      function () {
-        var y = window.scrollY || 0;
-        if (Math.abs(y - last) < 8) return;
-        last = y;
-      },
-      { passive: true }
-    );
-  }
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!backTop) return;
+      if (window.scrollY > 420) backTop.classList.add("is-visible");
+      else backTop.classList.remove("is-visible");
+    },
+    { passive: true }
+  );
 
   function syncMenuFromHash() {
     if (location.hash === "#catering") {

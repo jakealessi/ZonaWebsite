@@ -226,16 +226,16 @@
             Cocktails, seafood and pasta, and our welcoming dining room — visit to experience it in
             person.
           </p>
-          <div class="gallery-grid" role="list">
-            <figure class="gallery-card" role="listitem">
+          <div class="gallery-grid">
+            <figure class="gallery-card">
               <div class="gallery-ph gallery-ph--a" aria-hidden="true"></div>
               <figcaption>Cocktail drinks</figcaption>
             </figure>
-            <figure class="gallery-card" role="listitem">
+            <figure class="gallery-card">
               <div class="gallery-ph gallery-ph--b" aria-hidden="true"></div>
               <figcaption>Seafood &amp; pasta</figcaption>
             </figure>
-            <figure class="gallery-card" role="listitem">
+            <figure class="gallery-card">
               <div class="gallery-ph gallery-ph--c" aria-hidden="true"></div>
               <figcaption>Welcoming atmosphere</figcaption>
             </figure>
@@ -255,17 +255,33 @@
           </div>
 
           <div class="menu-tabs" role="tablist" aria-label="Menu type">
-            <button type="button" class="menu-tab is-active" role="tab" aria-selected="true" data-panel="dining">
+            <button
+              type="button"
+              class="menu-tab is-active"
+              id="tab-dining"
+              role="tab"
+              aria-selected="true"
+              aria-controls="menu-panel-dining"
+              data-panel="dining"
+            >
               Dine-in menu
             </button>
-            <button type="button" class="menu-tab" role="tab" aria-selected="false" data-panel="catering">
+            <button
+              type="button"
+              class="menu-tab"
+              id="tab-catering"
+              role="tab"
+              aria-selected="false"
+              aria-controls="menu-panel-catering"
+              data-panel="catering"
+            >
               Catering menu
             </button>
           </div>
 
           <div
             id="menu-panel-dining"
-            class="menu-panel is-active"
+            class="menu-panel"
             role="tabpanel"
             aria-labelledby="tab-dining"
           >
@@ -276,7 +292,13 @@
             <div id="dining-menu-root" class="menu-accordion"></div>
           </div>
 
-          <div id="menu-panel-catering" class="menu-panel" role="tabpanel" hidden>
+          <div
+            id="menu-panel-catering"
+            class="menu-panel"
+            role="tabpanel"
+            aria-labelledby="tab-catering"
+            hidden
+          >
             <div class="catering-intro card-elevated" id="catering">
               <h3>Catering</h3>
               <p>
@@ -295,7 +317,7 @@
       </section>
 
       <section class="section section-reservations" id="reservations">
-        <div class="container split split-reverse">
+        <div class="container split">
           <div>
             <p class="eyebrow">Reservations</p>
             <h2 class="section-title align-left">Come enjoy our hospitality &amp; delicious food</h2>
@@ -304,7 +326,7 @@
               <li><strong>Call</strong> <a href="tel:+15167994444">(516) 799-4444</a></li>
             </ul>
           </div>
-          <form class="reservation-form card-elevated" id="reservation-form" novalidate>
+          <form class="reservation-form card-elevated" id="reservation-form">
             <h3 class="form-title">Reservation request</h3>
             <label for="res-date">
               Date
