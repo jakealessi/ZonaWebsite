@@ -1,20 +1,27 @@
-/* Zona Restaurant — warm Italian palette, modern layout */
+/* Zona — editorial trattoria: warm paper, earth tones, mixed radii */
 :root {
-  --color-bg: #f7f3ec;
-  --color-bg-deep: #ede6db;
-  --color-ink: #1a1814;
-  --color-muted: #5c564c;
-  --color-bronze: #8b5c2e;
-  --color-bronze-light: #b8956a;
-  --color-accent: #6b4a2e;
-  --color-white: #fffdf9;
-  --color-border: rgba(26, 24, 20, 0.12);
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "Outfit", system-ui, sans-serif;
-  --shadow-soft: 0 18px 50px rgba(26, 24, 20, 0.08);
-  --radius: 12px;
-  --radius-lg: 20px;
-  --max: 1120px;
+  --color-bg: #ebe3d6;
+  --color-bg-paper: #f4ede3;
+  --color-bg-deep: #dfd2c2;
+  --color-ink: #221c16;
+  --color-muted: #5c5349;
+  --color-terracotta: #a04528;
+  --color-olive: #3d4a34;
+  --color-bronze: #8a6a3e;
+  --color-bronze-light: #c9a86c;
+  --color-accent: #6b3a28;
+  --color-white: #fffaf3;
+  --color-border: rgba(34, 28, 22, 0.14);
+  --color-footer-bg: #2a2119;
+  --font-display: "Fraunces", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-ui: "DM Sans", system-ui, sans-serif;
+  --shadow-soft: 8px 14px 32px rgba(34, 28, 22, 0.09);
+  --shadow-lift: 12px 18px 0 rgba(34, 28, 22, 0.06);
+  --radius: 10px;
+  --radius-lg: 18px;
+  --radius-quirk: 3px 22px 6px 4px;
+  --max: 1080px;
   --header-h: 72px;
 }
 
@@ -34,14 +41,18 @@ main section[id],
   scroll-margin-top: calc(var(--header-h) + 0.75rem);
 }
 
-body {
+.site-body {
   margin: 0;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.06rem;
+  line-height: 1.68;
   color: var(--color-ink);
-  background: var(--color-bg);
+  background-color: var(--color-bg-paper);
+  background-image:
+    radial-gradient(ellipse 100% 70% at 100% 0%, rgba(160, 69, 40, 0.07), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(61, 74, 52, 0.06), transparent 50%),
+    linear-gradient(180deg, rgba(235, 227, 214, 0.5) 0%, transparent 28%);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -52,13 +63,13 @@ img {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-terracotta);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--color-bronze);
+  color: var(--color-accent);
 }
 
 .skip-link {
@@ -95,19 +106,21 @@ a:hover {
 }
 
 .lead {
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 1.18rem;
+  line-height: 1.75;
   text-align: center;
+  font-weight: 400;
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-bronze);
-  margin: 0 0 0.75rem;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--color-terracotta);
+  margin: 0 0 1rem;
 }
 
 .eyebrow.center {
@@ -122,8 +135,10 @@ a:hover {
 .section-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
-  line-height: 1.15;
+  font-optical-sizing: auto;
+  font-size: clamp(1.85rem, 4.2vw, 2.55rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   text-align: center;
   margin: 0 0 1.25rem;
   color: var(--color-ink);
@@ -138,9 +153,10 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247, 243, 236, 0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(244, 237, 227, 0.88);
+  backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 0 rgba(255, 250, 243, 0.6) inset;
 }
 
 .header-inner {
@@ -169,8 +185,9 @@ a:hover {
 .brand-text {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: 0.02em;
+  font-optical-sizing: auto;
+  font-size: 1.32rem;
+  letter-spacing: -0.03em;
 }
 
 .site-nav {
@@ -189,14 +206,16 @@ a:hover {
 }
 
 .nav-list a {
-  font-size: 0.92rem;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--color-ink);
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
 
 .nav-list a:hover {
-  color: var(--color-bronze);
+  color: var(--color-terracotta);
 }
 
 .btn {
@@ -204,15 +223,16 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.65rem 1.35rem;
-  border-radius: 999px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 0.68rem 1.4rem;
+  border-radius: var(--radius-quirk);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
 .btn:active {
@@ -220,36 +240,42 @@ a:hover {
 }
 
 .btn-primary {
-  background: var(--color-ink);
+  background: var(--color-terracotta);
   color: var(--color-white);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lift);
 }
 
 .btn-primary:hover {
-  background: var(--color-accent);
+  background: #8a3a22;
   color: var(--color-white);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(255, 250, 243, 0.65);
   color: var(--color-ink);
-  border-color: var(--color-border);
+  border-color: rgba(34, 28, 22, 0.2);
+  border-radius: 5px 18px 5px 5px;
 }
 
 .btn-ghost:hover {
-  border-color: var(--color-bronze-light);
-  color: var(--color-bronze);
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+  background: var(--color-white);
 }
 
 .btn-header {
-  font-size: 0.88rem;
-  padding: 0.45rem 0.95rem;
+  font-size: 0.84rem;
+  padding: 0.48rem 1rem;
+  border-radius: 6px;
   background: var(--color-white);
-  border-color: var(--color-border);
+  border-color: rgba(34, 28, 22, 0.18);
   color: var(--color-ink);
 }
 
 .btn-header:hover {
-  border-color: var(--color-bronze-light);
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
 }
 
 .btn-block {
@@ -285,7 +311,7 @@ a:hover {
   .site-nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
-    background: var(--color-bg);
+    background: rgba(244, 237, 227, 0.97);
     border-bottom: 1px solid var(--color-border);
     padding: 1.25rem 1.5rem 1.5rem;
     flex-direction: column;
@@ -316,11 +342,11 @@ a:hover {
 /* Hero */
 .hero {
   position: relative;
-  min-height: min(88vh, 820px);
+  min-height: min(86vh, 780px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(2rem, 6vw, 4rem) 1.5rem;
+  padding: clamp(2.25rem, 7vw, 4.5rem) 1.5rem;
   overflow: hidden;
 }
 
@@ -328,8 +354,9 @@ a:hover {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184, 149, 106, 0.18), transparent 55%),
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
+    radial-gradient(ellipse 90% 55% at 70% 15%, rgba(160, 69, 40, 0.11), transparent 52%),
+    radial-gradient(ellipse 60% 45% at 15% 75%, rgba(61, 74, 52, 0.07), transparent 48%),
+    linear-gradient(165deg, var(--color-bg-deep) 0%, var(--color-bg-paper) 48%, #e8dfd2 100%);
 }
 
 .hero-bg::after {
@@ -338,10 +365,10 @@ a:hover {
   inset: 0;
   background-image: url("../assets/zona-logo.png");
   background-repeat: no-repeat;
-  background-position: 50% 42%;
-  background-size: min(520px, 85vw);
-  opacity: 0.06;
-  filter: grayscale(0.3);
+  background-position: 52% 38%;
+  background-size: min(480px, 82vw);
+  opacity: 0.055;
+  filter: grayscale(0.45) sepia(0.15);
   pointer-events: none;
 }
 
@@ -349,45 +376,59 @@ a:hover {
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 640px;
+  max-width: 36rem;
+}
+
+.hero-content::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin: 0 auto 1.25rem;
+  background: linear-gradient(90deg, transparent, var(--color-terracotta), transparent);
+  opacity: 0.85;
 }
 
 .hero-logo {
-  margin: 0 auto 1.25rem;
-  filter: drop-shadow(0 12px 28px rgba(26, 24, 20, 0.12));
+  margin: 0 auto 1.35rem;
+  filter: drop-shadow(6px 10px 24px rgba(34, 28, 22, 0.14));
 }
 
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.35rem, 6vw, 3.4rem);
-  line-height: 1.1;
-  margin: 0 0 1rem;
+  font-optical-sizing: auto;
+  font-size: clamp(2.1rem, 5.5vw, 3.15rem);
+  line-height: 1.12;
+  margin: 0 0 1.1rem;
   color: var(--color-ink);
 }
 
 .hero-lead {
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.85rem;
   color: var(--color-muted);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
+  max-width: 32rem;
+  margin-inline: auto;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.85rem;
   justify-content: center;
 }
 
 /* Welcome & cards */
 .section-welcome {
   background: var(--color-white);
+  box-shadow: 0 -1px 0 rgba(34, 28, 22, 0.06);
 }
 
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.35rem 1.25rem;
   margin-top: 2.5rem;
 }
 
@@ -398,25 +439,44 @@ a:hover {
 }
 
 .feature-card {
-  padding: 1.5rem 1.35rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  position: relative;
+  padding: 1.45rem 1.3rem 1.5rem;
+  border-radius: 4px 20px 8px 6px;
+  border: 1px solid rgba(34, 28, 22, 0.12);
+  border-top: 3px solid var(--color-terracotta);
+  background: linear-gradient(165deg, #faf6ef 0%, #f0e8dc 100%);
+  box-shadow: 4px 6px 0 rgba(34, 28, 22, 0.04);
+}
+
+.feature-card:nth-child(2) {
+  border-top-color: var(--color-olive);
+}
+
+.feature-card:nth-child(3) {
+  border-top-color: var(--color-bronze);
 }
 
 .feature-card h3 {
   font-family: var(--font-display);
-  font-size: 1.35rem;
-  margin: 0.5rem 0 0.5rem;
+  font-optical-sizing: auto;
+  font-size: 1.28rem;
+  font-weight: 600;
+  margin: 0.35rem 0 0.55rem;
+  letter-spacing: -0.02em;
 }
 
-.feature-icon {
-  font-size: 1.5rem;
+.feature-mark {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-muted);
+  opacity: 0.85;
 }
 
 /* Atmosphere split */
 .section-atmosphere {
-  background: linear-gradient(135deg, var(--color-bg-deep), var(--color-bg));
+  background: linear-gradient(125deg, #d8cbb8 0%, var(--color-bg-paper) 42%, #e5dccf 100%);
 }
 
 .split {
@@ -439,15 +499,16 @@ a:hover {
 }
 
 .split-panel {
-  border-radius: var(--radius-lg);
-  background: var(--color-white);
+  border-radius: 8px 24px 10px 8px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f3ebe0 100%);
   box-shadow: var(--shadow-soft);
-  min-height: 280px;
+  min-height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(34, 28, 22, 0.1);
+  border-left: 4px solid var(--color-olive);
 }
 
 .split-panel-inner {
@@ -459,12 +520,24 @@ a:hover {
   opacity: 0.85;
 }
 
+.panel-kicker {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.65rem;
+  color: var(--color-muted);
+}
+
 .panel-quote {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-optical-sizing: auto;
+  font-size: 1.28rem;
   font-style: italic;
+  font-weight: 500;
   margin: 0;
-  color: var(--color-accent);
+  color: var(--color-olive);
+  line-height: 1.45;
 }
 
 /* Services */
@@ -486,29 +559,34 @@ a:hover {
 }
 
 .service-card {
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  padding: 1.45rem 1.35rem;
+  border-radius: 6px 16px 6px 6px;
+  border: 1px solid rgba(34, 28, 22, 0.1);
+  background: rgba(255, 250, 243, 0.85);
+  border-left: 3px solid var(--color-bronze-light);
 }
 
 .service-card h3 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-optical-sizing: auto;
+  font-size: 1.38rem;
   margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .order-strip {
   margin-top: 2.75rem;
-  padding: 1.75rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: var(--color-ink);
+  padding: 1.85rem 1.6rem;
+  border-radius: 4px 20px 8px 6px;
+  background: linear-gradient(135deg, #3a261c 0%, #2a2119 55%, #3d2a1f 100%);
   color: var(--color-white);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
+  border: 1px solid rgba(255, 250, 243, 0.08);
+  box-shadow: var(--shadow-lift);
 }
 
 .order-strip .muted {
@@ -518,7 +596,10 @@ a:hover {
 
 .order-strip-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-optical-sizing: auto;
+  font-size: 1.48rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin: 0 0 0.25rem;
 }
 
@@ -530,29 +611,32 @@ a:hover {
 
 .order-pill {
   display: inline-flex;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
+  font-family: var(--font-ui);
+  padding: 0.55rem 1.15rem;
+  border-radius: 5px 14px 4px 4px;
   background: var(--color-white);
   color: var(--color-ink);
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
   text-decoration: none;
 }
 
 .order-pill:hover {
-  background: var(--color-bronze-light);
-  color: var(--color-ink);
+  background: #f4e9d8;
+  color: var(--color-terracotta);
 }
 
 .order-pill-alt {
   background: transparent;
   color: var(--color-white);
-  border: 1px solid rgba(255, 253, 249, 0.45);
+  border: 1px solid rgba(255, 250, 243, 0.4);
 }
 
 .order-pill-alt:hover {
-  background: rgba(255, 253, 249, 0.12);
+  background: rgba(160, 69, 40, 0.35);
   color: var(--color-white);
+  border-color: rgba(255, 250, 243, 0.55);
 }
 
 /* About */
@@ -560,25 +644,32 @@ a:hover {
   background: var(--color-bg);
 }
 
-.about-subgrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+.about-care,
+.about-food {
   margin-top: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-border);
 }
 
-@media (max-width: 700px) {
-  .about-subgrid {
-    grid-template-columns: 1fr;
-  }
+.about-care h3,
+.about-food h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: var(--color-ink);
 }
 
-.about-subgrid h3 {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  margin-top: 0;
+.about-care p,
+.about-food p {
+  margin: 0 0 1.1rem;
+}
+
+.about-care p:last-child,
+.about-food p:last-child {
+  margin-bottom: 0;
 }
 
 /* Gallery */
@@ -612,26 +703,28 @@ a:hover {
 }
 
 .gallery-ph--a {
-  background: linear-gradient(145deg, #3d2e26 0%, #8b5c2e 45%, #c9a574 100%);
+  background: linear-gradient(148deg, #4a3228 0%, #7a4e2a 42%, #b8925e 100%);
 }
 
 .gallery-ph--b {
-  background: linear-gradient(160deg, #2a2520 0%, #6b5344 40%, #b8956a 100%);
+  background: linear-gradient(168deg, #2e2a24 0%, #5c4a3c 38%, #9a8068 95%);
 }
 
 .gallery-ph--c {
-  background: linear-gradient(135deg, #ede6db 0%, #c4b5a0 50%, #8b7355 100%);
+  background: linear-gradient(128deg, #ddd4c6 0%, #a89882 48%, #6b5a48 100%);
 }
 
 .gallery-card figcaption {
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
   font-weight: 500;
+  font-style: italic;
   color: var(--color-muted);
 }
 
 /* Menu */
 .section-menu {
-  background: linear-gradient(180deg, var(--color-bg-deep) 0%, var(--color-bg) 40%);
+  background: linear-gradient(185deg, #e0d4c4 0%, var(--color-bg-paper) 38%, #ebe3d6 100%);
 }
 
 .menu-header-block {
@@ -647,27 +740,30 @@ a:hover {
 }
 
 .menu-tab {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.55rem 1.25rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.5rem 0.25rem 0.55rem;
+  margin: 0 0.65rem;
+  border-radius: 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
   color: var(--color-muted);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  letter-spacing: 0.02em;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .menu-tab:hover {
-  border-color: var(--color-bronze-light);
   color: var(--color-ink);
+  border-bottom-color: rgba(160, 69, 40, 0.35);
 }
 
 .menu-tab.is-active {
-  background: var(--color-ink);
-  color: var(--color-white);
-  border-color: var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+  border-bottom-color: var(--color-terracotta);
 }
 
 .menu-panel[hidden] {
@@ -675,21 +771,23 @@ a:hover {
 }
 
 .disclaimer {
-  font-size: 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: var(--color-muted);
   margin: 0 0 1.5rem;
-  padding: 0.85rem 1rem;
-  background: rgba(139, 92, 46, 0.08);
-  border-radius: var(--radius);
-  border-left: 3px solid var(--color-bronze-light);
+  padding: 0.9rem 1rem 0.95rem 1.1rem;
+  background: rgba(61, 74, 52, 0.06);
+  border-radius: 2px 12px 4px 3px;
+  border-left: 4px solid var(--color-olive);
 }
 
 .card-elevated {
   background: var(--color-white);
-  border-radius: var(--radius-lg);
+  border-radius: 6px 20px 8px 6px;
   padding: 1.5rem 1.35rem;
   box-shadow: var(--shadow-soft);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(34, 28, 22, 0.1);
 }
 
 .catering-intro {
@@ -698,7 +796,10 @@ a:hover {
 
 .catering-intro h3 {
   font-family: var(--font-display);
-  font-size: 1.65rem;
+  font-optical-sizing: auto;
+  font-size: 1.58rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin-top: 0;
 }
 
@@ -709,9 +810,9 @@ a:hover {
 }
 
 .menu-details {
-  border-radius: var(--radius);
-  border: 1px solid var(--color-border);
-  background: var(--color-white);
+  border-radius: 4px 14px 5px 4px;
+  border: 1px solid rgba(34, 28, 22, 0.11);
+  background: rgba(255, 250, 243, 0.92);
   overflow: hidden;
 }
 
@@ -720,8 +821,10 @@ a:hover {
   cursor: pointer;
   padding: 1rem 1.15rem;
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-optical-sizing: auto;
+  font-size: 1.18rem;
   font-weight: 600;
+  letter-spacing: -0.02em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -733,19 +836,24 @@ a:hover {
 }
 
 .menu-details summary::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--color-bronze);
-  border-bottom: 2px solid var(--color-bronze);
-  transform: rotate(45deg);
+  content: "+";
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-terracotta);
+  border: none;
+  width: auto;
+  height: auto;
+  transform: none;
   transition: transform 0.2s;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .menu-details[open] summary::after {
-  transform: rotate(-135deg);
-  margin-top: 4px;
+  content: "–";
+  transform: none;
+  margin-top: 0;
 }
 
 .menu-details .menu-inner {
@@ -760,10 +868,12 @@ a:hover {
 
 .menu-subhead {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-optical-sizing: auto;
+  font-size: 1.02rem;
   font-weight: 600;
+  font-style: italic;
   margin: 1.25rem 0 0.65rem;
-  color: var(--color-accent);
+  color: var(--color-olive);
 }
 
 .menu-subhead:first-child {
@@ -787,7 +897,7 @@ a:hover {
 }
 
 .menu-items strong {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-ink);
 }
 
@@ -814,8 +924,10 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+  font-family: var(--font-ui);
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   margin-bottom: 0.85rem;
   color: var(--color-muted);
 }
@@ -825,10 +937,10 @@ a:hover {
 .reservation-form select {
   font-family: var(--font-body);
   font-size: 1rem;
-  padding: 0.6rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg);
+  padding: 0.62rem 0.78rem;
+  border-radius: 4px 12px 5px 4px;
+  border: 1px solid rgba(34, 28, 22, 0.18);
+  background: rgba(255, 250, 243, 0.9);
   color: var(--color-ink);
 }
 
@@ -857,8 +969,10 @@ a:hover {
 
 .form-title {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-optical-sizing: auto;
+  font-size: 1.42rem;
   margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .form-footnote {
@@ -901,7 +1015,9 @@ a:hover {
 
 .contact-card h3 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-optical-sizing: auto;
+  font-size: 1.4rem;
+  font-weight: 600;
   margin-top: 0;
 }
 
@@ -912,8 +1028,8 @@ a:hover {
 }
 
 .contact-card a:hover {
-  color: var(--color-bronze);
-  border-color: var(--color-bronze-light);
+  color: var(--color-terracotta);
+  border-color: rgba(160, 69, 40, 0.45);
 }
 
 .phone-lg {
@@ -924,10 +1040,11 @@ a:hover {
 
 /* Footer */
 .site-footer {
-  padding: 2.5rem 1rem;
-  background: var(--color-ink);
-  color: rgba(255, 253, 249, 0.82);
+  padding: 2.75rem 1rem 2.5rem;
+  background: var(--color-footer-bg);
+  color: rgba(255, 250, 243, 0.82);
   text-align: center;
+  border-top: 3px solid var(--color-terracotta);
 }
 
 .footer-inner {
@@ -970,7 +1087,7 @@ a:hover {
 }
 
 .footer-nav-list a:hover {
-  color: var(--color-bronze-light);
+  color: #e8c89a;
 }
 
 .footer-copy {
@@ -985,23 +1102,25 @@ a:hover {
   right: 1rem;
   bottom: 1rem;
   z-index: 90;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  border-radius: 4px 16px 5px 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-ink);
+  background: var(--color-footer-bg);
   color: var(--color-white);
   text-decoration: none;
-  font-size: 1.15rem;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 600;
   line-height: 1;
   box-shadow: var(--shadow-soft);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 250, 243, 0.12);
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s;
 }
 
 .back-to-top.is-visible {
@@ -1011,7 +1130,7 @@ a:hover {
 }
 
 .back-to-top:hover {
-  background: var(--color-accent);
+  background: var(--color-terracotta);
   color: var(--color-white);
 }
 
