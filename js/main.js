@@ -338,13 +338,13 @@
         "Phone: " + (fd.get("phone") || ""),
         "Comments: " + (fd.get("comments") || ""),
         "",
-        "Please call (516) 799-4444 to confirm your table.",
+        "Questions? Call us at (516) 799-4444 — we’re happy to help.",
       ];
       var text = lines.join("\n");
 
       function done() {
         statusEl.textContent =
-          "Thank you. Your request summary was copied to the clipboard. Please call (516) 799-4444 to confirm your table.";
+          "Thanks! Your details are copied — give us a ring at (516) 799-4444 if you’d like to confirm.";
         form.reset();
         setReservationDateBounds();
         if (dateInput) dateInput.value = dateInput.min;

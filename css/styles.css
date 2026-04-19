@@ -419,8 +419,8 @@ a:hover {
   justify-content: center;
 }
 
-/* Welcome & cards */
-.section-welcome {
+/* Highlights & cards */
+.section-highlights {
   background: var(--color-white);
   box-shadow: 0 -1px 0 rgba(34, 28, 22, 0.06);
 }
